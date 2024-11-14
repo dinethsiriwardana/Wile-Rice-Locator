@@ -45,7 +45,7 @@ class RiceNavBar extends StatelessWidget {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         image: AssetImage(
-                            'assets/img/${item['codename']}/icon.png'),
+                            'assets/img/${item['codename']}/icon.jpge'),
                         fit: BoxFit.fill,
                       ),
                     ),

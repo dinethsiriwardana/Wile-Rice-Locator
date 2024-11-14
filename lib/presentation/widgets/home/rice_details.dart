@@ -19,7 +19,7 @@ class RiceData extends StatefulWidget {
 
 class _RiceDataState extends State<RiceData> {
   List<String> _imagePaths = [];
-  List<String> _imageExtensions = ['.png'];
+  List<String> _imageExtensions = ['.jpge'];
 
   Future<void> _loadImages(String folderName) async {
     final manifestContent = await rootBundle.loadString('AssetManifest.json');
