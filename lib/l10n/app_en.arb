@@ -1,0 +1,8 @@
+{
+  "title": "Flutter Demo",
+  "@title": {
+    "description": "The title of the application",
+    "type": "text",
+    "placeholders": {}
+  }
+}

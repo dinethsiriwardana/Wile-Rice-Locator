@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "64117540752",
+    "project_id": "wildrice-fcc11",
+    "storage_bucket": "wildrice-fcc11.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64117540752:android:e2d98745852fc0eacf1515",
+        "android_client_info": {
+          "package_name": "com.example.wild_rice_locator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfVCXePV68zJGA7cPNnErhtmFE1-fFKyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
