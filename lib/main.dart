@@ -63,8 +63,8 @@ class MyApp extends StatelessWidget {
           // supportedLocales: AppLocalizations.supportedLocales,
           // locale: const Locale('en'),
           routes: appRoutes,
-          home: const ShowLocations(),
-          // home: const LandingPage(),
+          // home: const ShowLocations(),
+          home: const LandingPage(),
         );
       }),
     );

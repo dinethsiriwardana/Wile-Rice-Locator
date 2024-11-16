@@ -68,6 +68,7 @@ class GetUserLocation {
 
       final prettyAddress =
           reversedSearchResults.results.firstOrNull?.mapToPretty();
+
       if (prettyAddress == null) {
         throw Exception('No address found');
       }

@@ -21,7 +21,7 @@ class AddLocation extends StatefulWidget {
 class _AddLocationState extends State<AddLocation> {
   GoogleMapController? mapController;
   final _formKey = GlobalKey<FormState>();
-  String? postalCode, city, state, address;
+  String? postalCode, city, state, address, area, length, width;
   double? latitude, longitude;
   String? ricetype = null; // Explicitly set to null
 
@@ -39,15 +39,20 @@ class _AddLocationState extends State<AddLocation> {
   }
 
   Future<void> submit(GeocodingPrettyAddress prettyAddress) async {
-    final location = LocationModelFb(prettyAddress: prettyAddress, formdata: {
-      'address': address,
-      'postalCode': postalCode,
-      'city': city,
-      'state': state,
-      'latitude': prettyAddress.latitude,
-      'longitude': prettyAddress.longitude,
-      'ricetype': ricetype
-    });
+    final location = LocationModelFb(
+      prettyAddress: prettyAddress,
+      formdata: FormDataModel(
+        address: address ?? '',
+        postalCode: postalCode ?? '',
+        city: city ?? '',
+        district: state ?? '',
+        latitude: prettyAddress.latitude,
+        longitude: prettyAddress.longitude,
+        ricetype: ricetype ?? '',
+        length: 0,
+        width: 0,
+      ),
+    );
 
     Map<String, String> resutl = await LocationHandler().addLocation(location);
 
@@ -120,7 +125,7 @@ class _AddLocationState extends State<AddLocation> {
                               children: [
                                 DropdownButtonFormField<String>(
                                   decoration: const InputDecoration(
-                                    labelText: 'District',
+                                    labelText: 'Rice Type',
                                     border: OutlineInputBorder(),
                                     labelStyle: TextStyle(fontSize: 16.0),
                                   ),
@@ -154,12 +159,22 @@ class _AddLocationState extends State<AddLocation> {
                                     'Postal Code',
                                     'Enter Postal Code',
                                     (value) => postalCode = value),
-                                buildTextFormField('City', 'Enter City',
-                                    (value) => city = value,
-                                    initialValue: location.prettyAddress.city),
-                                buildTextFormField('State', 'Enter State',
-                                    (value) => state = value,
-                                    initialValue: location.prettyAddress.state),
+                                buildTextFormField(
+                                  'City',
+                                  'Enter City',
+                                  (value) => city = value,
+                                  initialValue: location.prettyAddress.city,
+                                ),
+                                buildTextFormField(
+                                  'Length',
+                                  'Enter length',
+                                  (value) => length = value,
+                                ),
+                                buildTextFormField(
+                                  'Width',
+                                  'Enter width',
+                                  (value) => width = value,
+                                ),
                                 const SizedBox(height: 20),
                                 SizedBox(
                                   height: 90.w,
@@ -169,7 +184,7 @@ class _AddLocationState extends State<AddLocation> {
                                       target: LatLng(
                                           location.prettyAddress.latitude,
                                           location.prettyAddress.longitude),
-                                      zoom: 15.0,
+                                      zoom: 12.0,
                                     ),
                                     markers: location.getMarkers,
                                     myLocationEnabled: true,

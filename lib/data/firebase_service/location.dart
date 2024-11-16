@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_geocoding_api/google_geocoding_api.dart';
 import 'package:wild_rice_locator/data/firebase_service/auth.dart';
 import 'package:wild_rice_locator/data/firebase_service/user.dart';
 import 'package:wild_rice_locator/domain/model/firebase/location_model_fb.dart';
@@ -19,6 +20,8 @@ class LocationHandler {
 
       locationModelFb.user = userd;
 
+      // print(locationModelFb.formdata.toJson());
+
       final result =
           await _firestore.collection('location').add(locationModelFb.toJson());
       return {"status": "success", "id": result.id};
@@ -32,10 +35,13 @@ class LocationHandler {
     try {
       final result = await _firestore.collection('location').get();
 
+      // print data
+
       return result.docs
           .map(
               (e) => LocationModelFb.fromJson(e.data() as Map<String, dynamic>))
           .toList();
+      return [];
     } catch (e) {
       print("Error on GetLocationsFirebase: " + e.toString());
       return [];
