@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
-import 'package:wild_rice_locator/data/service/auth.dart';
+import 'package:wild_rice_locator/data/firebase_service/auth.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

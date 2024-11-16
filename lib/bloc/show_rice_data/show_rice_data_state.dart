@@ -12,3 +12,5 @@ final class ShowRiceDataLoaded extends ShowRiceDataState {
 
   ShowRiceDataLoaded(this.data);
 }
+
+final class ShowAppDataState extends ShowRiceDataState {}

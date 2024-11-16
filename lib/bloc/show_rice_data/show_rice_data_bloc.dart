@@ -9,6 +9,8 @@ class ShowRiceDataBloc extends Bloc<ShowRiceDataEvent, ShowRiceDataState> {
     on<ShowRiceDataEvent>((event, emit) {
       if (event is ShowRiceData) {
         emit(ShowRiceDataLoaded(event.data));
+      } else if (event is ShowAppData) {
+        emit(ShowAppDataState());
       }
     });
   }

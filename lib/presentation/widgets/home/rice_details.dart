@@ -19,7 +19,7 @@ class RiceData extends StatefulWidget {
 
 class _RiceDataState extends State<RiceData> {
   List<String> _imagePaths = [];
-  List<String> _imageExtensions = ['.jpge'];
+  List<String> _imageExtensions = ['.jpeg'];
 
   Future<void> _loadImages(String folderName) async {
     final manifestContent = await rootBundle.loadString('AssetManifest.json');
@@ -32,8 +32,6 @@ class _RiceDataState extends State<RiceData> {
               key.contains('assets/img/$folderName/'))
           .toList();
     });
-
-    print(_imagePaths);
   }
 
   @override
@@ -52,7 +50,7 @@ class _RiceDataState extends State<RiceData> {
         }
       },
       child: SizedBox(
-        height: 65.h,
+        height: 75.h,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

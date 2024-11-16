@@ -4,13 +4,15 @@ class UserDataModel {
   String town;
   String district;
   int age;
+  int mobile;
 
   UserDataModel({
     required this.uid,
     required this.name,
     required this.district,
     required this.age,
-    this.town = '', // Default value if not provided
+    this.town = '',
+    required this.mobile,
   });
 
   Map<String, dynamic> toJson() {
@@ -20,6 +22,7 @@ class UserDataModel {
       'district': district,
       'age': age,
       'town': town,
+      'mobile': mobile,
     };
   }
 
@@ -29,7 +32,8 @@ class UserDataModel {
       name: json['name'],
       district: json['district'],
       age: json['age'],
-      town: json['own'] ?? '', // Use empty string if 'own' is missing
+      town: json['town'] ?? '', // Use empty string if 'own' is missing
+      mobile: json['mobile'],
     );
   }
 }

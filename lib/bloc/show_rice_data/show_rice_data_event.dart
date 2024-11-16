@@ -8,3 +8,5 @@ class ShowRiceData extends ShowRiceDataEvent {
 
   ShowRiceData(this.data);
 }
+
+class ShowAppData extends ShowRiceDataEvent {}

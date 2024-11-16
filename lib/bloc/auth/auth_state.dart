@@ -18,7 +18,8 @@ final class AuthRegisterd extends AuthState {}
 
 final class AuthUnRegisterd extends AuthState {
   final String user;
-  AuthUnRegisterd({required this.user});
+  final String number;
+  AuthUnRegisterd({required this.number, required this.user});
 }
 
 final class AuthError extends AuthState {

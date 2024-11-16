@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:wild_rice_locator/data/service/rice_data.dart';
+import 'package:wild_rice_locator/data/firebase_service/rice_data.dart';
 
 part 'fetch_data_event.dart';
 part 'fetch_data_state.dart';

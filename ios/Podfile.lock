@@ -1151,7 +1151,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.36):
     - BoringSSL-GRPC/Interface (= 0.0.36)
   - BoringSSL-GRPC/Interface (0.0.36)
-  - cloud_firestore (5.4.5):
+  - cloud_firestore (5.5.0):
     - Firebase/Firestore (= 11.4.0)
     - firebase_core
     - Flutter
@@ -1166,14 +1166,14 @@ PODS:
   - Firebase/Firestore (11.4.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 11.4.0)
-  - firebase_auth (5.3.2):
+  - firebase_auth (5.3.3):
     - Firebase/Auth (= 11.4.0)
     - firebase_core
     - Flutter
-  - firebase_core (3.7.0):
+  - firebase_core (3.8.0):
     - Firebase/CoreOnly (= 11.4.0)
     - Flutter
-  - firebase_database (11.1.5):
+  - firebase_database (11.1.6):
     - Firebase/Database (= 11.4.0)
     - firebase_core
     - Flutter
@@ -1224,6 +1224,21 @@ PODS:
     - nanopb (~> 3.30910.0)
   - FirebaseSharedSwift (11.4.0)
   - Flutter (1.0.0)
+  - geocoding_ios (1.0.5):
+    - Flutter
+  - geolocator_apple (1.2.0):
+    - Flutter
+  - Google-Maps-iOS-Utils (5.0.0):
+    - GoogleMaps (~> 8.0)
+  - google_maps_flutter_ios (0.0.1):
+    - Flutter
+    - Google-Maps-iOS-Utils (< 7.0, >= 5.0)
+    - GoogleMaps (< 10.0, >= 8.4)
+  - GoogleMaps (8.4.0):
+    - GoogleMaps/Maps (= 8.4.0)
+  - GoogleMaps/Base (8.4.0)
+  - GoogleMaps/Maps (8.4.0):
+    - GoogleMaps/Base
   - GoogleUtilities/AppDelegateSwizzler (8.0.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -1353,6 +1368,9 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
   - Flutter (from `Flutter`)
+  - geocoding_ios (from `.symlinks/plugins/geocoding_ios/ios`)
+  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
+  - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
 
 SPEC REPOS:
   trunk:
@@ -1369,6 +1387,8 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseFirestoreInternal
     - FirebaseSharedSwift
+    - Google-Maps-iOS-Utils
+    - GoogleMaps
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
@@ -1388,15 +1408,21 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_database/ios"
   Flutter:
     :path: Flutter
+  geocoding_ios:
+    :path: ".symlinks/plugins/geocoding_ios/ios"
+  geolocator_apple:
+    :path: ".symlinks/plugins/geolocator_apple/ios"
+  google_maps_flutter_ios:
+    :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
 
 SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
   BoringSSL-GRPC: ca6a8e5d04812fce8ffd6437810c2d46f925eaeb
-  cloud_firestore: 6bae2db322e02f737234a0ce847ddaf18d5012b6
+  cloud_firestore: 8794ea2885e367f0a2096338964ddfd49739b2c7
   Firebase: cf1b19f21410b029b6786a54e9764a0cacad3c99
-  firebase_auth: 5defc54c120ef8d00a359ba787f1f3f521db59ce
-  firebase_core: f8c5b220a8f9c436fdbd075ae321cef3d96ef181
-  firebase_database: 5dc673cd8a8f00735751562b4f6fdf4aa78ec8c6
+  firebase_auth: 42718683069d35d73af7a986b55b194589039e5e
+  firebase_core: 9efc3ecf689cdbc90f13f4dc58108c83ea46b266
+  firebase_database: ec66bb7993ba6e50a80fdf6b17ea843ad569428d
   FirebaseAppCheckInterop: 1b9643ae2f1ee214488caa2f8e32b7bc2f0f3735
   FirebaseAuth: c359af98bd703cbf4293eec107a40de08ede6ce6
   FirebaseAuthInterop: 9ac948965ac13ec9d8a080f39490ddb2bda30520
@@ -1408,6 +1434,11 @@ SPEC CHECKSUMS:
   FirebaseFirestoreInternal: 004452c4669d5df8869c9f8f7a24ee0009852d5b
   FirebaseSharedSwift: 505dae2d05969dbf6d43749a642bb1bf230f0252
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  geocoding_ios: d7460f56e80e118d57678efe5c2cdc888739ff18
+  geolocator_apple: 9bcea1918ff7f0062d98345d238ae12718acfbc1
+  Google-Maps-iOS-Utils: 66d6de12be1ce6d3742a54661e7a79cb317a9321
+  google_maps_flutter_ios: e31555a04d1986ab130f2b9f24b6cdc861acc6d3
+  GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   "gRPC-C++": 2fa52b3141e7789a28a737f251e0c45b4cb20a87
   gRPC-Core: a27c294d6149e1c39a7d173527119cfbc3375ce4
@@ -1416,6 +1447,6 @@ SPEC CHECKSUMS:
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5
+PODFILE CHECKSUM: 1959d098c91d8a792531a723c4a9d7e9f6a01e38
 
 COCOAPODS: 1.14.3

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:wild_rice_locator/bloc/fetch_data/fetch_data_bloc.dart';
 import 'package:wild_rice_locator/bloc/show_rice_data/show_rice_data_bloc.dart';
@@ -14,23 +15,69 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: SizedBox(
-        width: 170, // Adjust the width here
-        child: FloatingActionButton(
-          onPressed: () {
-            // Handle button press
-            print('FAB Pressed');
-          },
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.add),
-              SizedBox(width: 8), // Space between icon and text
-              Text('Add a Location'),
-            ],
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+
+      floatingActionButton: SpeedDial(
+        icon: Icons.menu,
+        activeIcon: Icons.close,
+        backgroundColor: Theme.of(context).primaryColor,
+        overlayColor: Colors.black,
+        overlayOpacity: 0.5,
+        tooltip: 'Open Speed Dial',
+        heroTag: 'speed-dial-hero-tag',
+        switchLabelPosition: true,
+        childrenButtonSize: Size(70.0, 70.0),
+        buttonSize: Size(70.0, 70.0),
+        spacing: 20.0,
+        children: [
+          SpeedDialChild(
+            child: const Icon(
+              Icons.add_location,
+              size: 40,
+            ),
+            backgroundColor: Colors.white,
+            foregroundColor: Theme.of(context).primaryColor,
+            label: '  Add a Location  ',
+            visible: true,
+            onTap: () => Navigator.pushNamed(context, '/addlocation'),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100)),
           ),
-        ),
+          SpeedDialChild(
+            child: const Icon(
+              Icons.search,
+              size: 40,
+            ),
+            backgroundColor: Colors.white,
+            foregroundColor: Theme.of(context).primaryColor,
+            label: '  Search Locations  ',
+            visible: true,
+            onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text(("Third Child Pressed")))),
+            onLongPress: () => debugPrint('THIRD CHILD LONG PRESS'),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100)),
+          ),
+        ],
       ),
+
+      //  SizedBox(
+      //   width: 170, // Adjust the width here
+      //   child: FloatingActionButton(
+      //     onPressed: () {
+      //       // Handle button press
+      //       Navigator.pushNamed(context, '/addlocation');
+      //     },
+      //     child: const Row(
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       children: [
+      //         Icon(Icons.add),
+      //         SizedBox(width: 8), // Space between icon and text
+      //         Text('Add a Location'),
+      //       ],
+      //     ),
+      //   ),
+      // ),
       body: BlocBuilder(
         bloc: BlocProvider.of<FetchDataBloc>(context),
         builder: (context, state) {
@@ -46,7 +93,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     RiceNavBar(data: data),
                     Container(
-                      height: 88.h,
+                      height: 98.h,
                       width: 70.w,
                       padding: const EdgeInsets.all(10),
                       color: Theme.of(context).primaryColorLight,
@@ -75,8 +122,18 @@ class HomePage extends StatelessWidget {
                                   builder: (context, state) {
                                     if (state is ShowRiceDataLoaded) {
                                       return RiceData(data: state.data);
+                                    } else {
+                                      return const Column(
+                                        children: [
+                                          AutoSizeText(
+                                              textAlign: TextAlign.justify,
+                                              // maxLines: 10,
+                                              "The app we’re developing is designed to help users identify, document, and locate different types of wild rice native to Sri Lanka. The app will feature a comprehensive catalog of wild rice species found across the island, allowing users to explore detailed profiles for each type. These profiles will include high-resolution images, and descriptions to aid in accurate identification."
+                                              // style: TextStyle(fontSize: 16),
+                                              )
+                                        ],
+                                      );
                                     }
-                                    return const SizedBox();
                                   }),
                             ],
                           ),

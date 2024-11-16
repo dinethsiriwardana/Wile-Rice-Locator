@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:wild_rice_locator/domain/model/user_model.dart';
+import 'package:wild_rice_locator/domain/model/firebase/user_model.dart';
 
 class UserData {
   FirebaseFirestore db = FirebaseFirestore.instance;

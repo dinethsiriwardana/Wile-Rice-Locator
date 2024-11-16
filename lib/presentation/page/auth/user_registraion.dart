@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wild_rice_locator/bloc/auth/auth_bloc.dart';
-import 'package:wild_rice_locator/data/service/user.dart';
-import 'package:wild_rice_locator/domain/model/user_model.dart';
+import 'package:wild_rice_locator/data/firebase_service/user.dart';
+import 'package:wild_rice_locator/domain/model/firebase/user_model.dart';
 
 class UserRegistration extends StatefulWidget {
   final String uid;
@@ -57,6 +57,7 @@ class _UserRegistrationState extends State<UserRegistration> {
         district: _district!,
         age: _age,
         uid: widget.uid,
+        mobile: 0,
       );
 
       bool formsubmit = await UserData().saveUserData(userData);

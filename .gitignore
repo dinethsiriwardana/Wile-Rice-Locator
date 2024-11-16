@@ -42,3 +42,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 data/WhatsApp Image 2024-10-23 at 8.13.34 PM.jpeg
+android/gradle.properties
