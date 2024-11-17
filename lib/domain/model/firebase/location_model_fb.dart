@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_geocoding_api/google_geocoding_api.dart';
 import 'package:wild_rice_locator/domain/model/firebase/user_model.dart';
 
@@ -8,7 +9,29 @@ class LocationModelFb {
   DateTime? createdDate;
 
   LocationModelFb(
-      {required this.prettyAddress, this.user, required this.formdata});
+      {required this.prettyAddress,
+      this.user,
+      required this.formdata,
+      this.createdDate});
+
+  Map<String, dynamic> prettyAddressMaptoJson() {
+    final Map<String, dynamic> prettyAddressMap = {
+      'address': prettyAddress.address,
+      'city': prettyAddress.city,
+      'country': prettyAddress.country,
+      'countryCode': prettyAddress.countryCode,
+      'postalCode': prettyAddress.postalCode,
+      'state': prettyAddress.state,
+      'stateCode': prettyAddress.stateCode,
+      'streetNumber': prettyAddress.streetNumber,
+      'streetName': prettyAddress.streetName,
+      'placeId': prettyAddress.placeId,
+      'latitude': prettyAddress.latitude,
+      'longitude': prettyAddress.longitude,
+    };
+
+    return prettyAddressMap;
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> prettyAddressMap = {
@@ -52,10 +75,20 @@ class LocationModelFb {
       );
     }
 
+    DateTime? parseFirestoreTimestamp(Timestamp timestamp) {
+      int seconds = timestamp.seconds;
+      int nanoseconds = timestamp.nanoseconds;
+
+      return DateTime.fromMillisecondsSinceEpoch(
+              seconds * 1000 + (nanoseconds ~/ 1000000))
+          .toLocal();
+    }
+
     return LocationModelFb(
       prettyAddress: mapToGeoPA(json['prettyAddress']),
       user: UserDataModel.fromJson(json['user']),
       formdata: FormDataModel.fromJson(json['formdata']),
+      createdDate: parseFirestoreTimestamp(json['createdDate']),
     );
   }
 }

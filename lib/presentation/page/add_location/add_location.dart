@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_geocoding_api/google_geocoding_api.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -86,33 +87,43 @@ class _AddLocationState extends State<AddLocation> {
     final getlocation = BlocProvider.of<GetlocationBloc>(context);
 
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          SizedBox(
-            width: 100.w,
-            height: 80.h,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-              child: BlocBuilder(
-                bloc: BlocProvider.of<GetlocationBloc>(context),
-                builder: (context, state) {
-                  if (state is GetlocationLoading) {
-                    return const Center(
-                      child: SizedBox(
-                          height: 100,
-                          width: 200,
-                          child: Column(
-                            children: [
-                              CircularProgressIndicator(),
-                              Text('Locating....'),
-                            ],
-                          )),
-                    );
-                  } else if (state is GetlocationLoaded) {
-                    final location = state.location;
-                    return SingleChildScrollView(
-                      child: Center(
+      appBar: AppBar(
+        // back button
+        title: const Text('Add Location'),
+
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              width: 100.w,
+              height: 80.h,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+                child: BlocBuilder(
+                  bloc: BlocProvider.of<GetlocationBloc>(context),
+                  builder: (context, state) {
+                    if (state is GetlocationLoading) {
+                      return const Center(
+                        child: SizedBox(
+                            height: 100,
+                            width: 200,
+                            child: Column(
+                              children: [
+                                CircularProgressIndicator(),
+                                Text('Locating....'),
+                              ],
+                            )),
+                      );
+                    } else if (state is GetlocationLoaded) {
+                      final location = state.location;
+                      return SingleChildScrollView(
                         child: Container(
                           // height: 80.h,
                           padding: const EdgeInsets.all(10),
@@ -180,6 +191,12 @@ class _AddLocationState extends State<AddLocation> {
                                   height: 90.w,
                                   width: 90.w,
                                   child: GoogleMap(
+                                    gestureRecognizers: <Factory<
+                                        OneSequenceGestureRecognizer>>{
+                                      Factory<OneSequenceGestureRecognizer>(
+                                        () => EagerGestureRecognizer(),
+                                      ),
+                                    },
                                     initialCameraPosition: CameraPosition(
                                       target: LatLng(
                                           location.prettyAddress.latitude,
@@ -213,7 +230,7 @@ class _AddLocationState extends State<AddLocation> {
                                     },
                                   ),
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   height: 20,
                                 ),
                                 SizedBox(
@@ -232,16 +249,16 @@ class _AddLocationState extends State<AddLocation> {
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  } else {
-                    return const Text('Error getting location');
-                  }
-                },
+                      );
+                    } else {
+                      return const Text('Error getting location');
+                    }
+                  },
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

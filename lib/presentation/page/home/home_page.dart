@@ -26,20 +26,21 @@ class HomePage extends StatelessWidget {
         tooltip: 'Open Speed Dial',
         heroTag: 'speed-dial-hero-tag',
         switchLabelPosition: true,
-        childrenButtonSize: Size(70.0, 70.0),
-        buttonSize: Size(70.0, 70.0),
+        // childrenButtonSize: Size(70.0, 70.0),
+        // buttonSize: Size(70.0, 70.0),
         spacing: 20.0,
         children: [
           SpeedDialChild(
             child: const Icon(
-              Icons.add_location,
+              Icons.gps_fixed,
               size: 40,
             ),
             backgroundColor: Colors.white,
             foregroundColor: Theme.of(context).primaryColor,
-            label: '  Add a Location  ',
+            label: '  Add Locations  ',
             visible: true,
             onTap: () => Navigator.pushNamed(context, '/addlocation'),
+            onLongPress: () => debugPrint('THIRD CHILD LONG PRESS'),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100)),
           ),
@@ -52,8 +53,21 @@ class HomePage extends StatelessWidget {
             foregroundColor: Theme.of(context).primaryColor,
             label: '  Search Locations  ',
             visible: true,
-            onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text(("Third Child Pressed")))),
+            onTap: () => Navigator.pushNamed(context, '/showlocations'),
+            onLongPress: () => debugPrint('THIRD CHILD LONG PRESS'),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100)),
+          ),
+          SpeedDialChild(
+            child: const Icon(
+              Icons.map,
+              size: 40,
+            ),
+            backgroundColor: Colors.white,
+            foregroundColor: Theme.of(context).primaryColor,
+            label: '  See Map  ',
+            visible: true,
+            onTap: () => Navigator.pushNamed(context, '/allMap'),
             onLongPress: () => debugPrint('THIRD CHILD LONG PRESS'),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100)),

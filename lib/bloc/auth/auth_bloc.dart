@@ -13,7 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
     on<AuthEvent>((event, emit) async {
       if (event is CheckAuthEvent) {
-        if (_auth.currentUser!.uid.isNotEmpty) {
+        if (_auth.currentUser != null && _auth.currentUser!.uid.isNotEmpty) {
           String uid = _auth.currentUser!.uid;
           String? phoneNumber = _auth.currentUser!.phoneNumber;
 

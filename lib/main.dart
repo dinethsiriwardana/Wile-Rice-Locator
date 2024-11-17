@@ -17,6 +17,7 @@ import 'package:wild_rice_locator/l10n/l10n.dart';
 import 'package:wild_rice_locator/presentation/page/add_location/add_location.dart';
 import 'package:wild_rice_locator/presentation/page/auth/login_phone.dart';
 import 'package:wild_rice_locator/presentation/page/landing_page.dart';
+import 'package:wild_rice_locator/presentation/page/map/map.dart';
 import 'package:wild_rice_locator/presentation/page/show_locations/show_locations.dart';
 import 'package:wild_rice_locator/routes.dart';
 import 'package:wild_rice_locator/theme.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
           // supportedLocales: AppLocalizations.supportedLocales,
           // locale: const Locale('en'),
           routes: appRoutes,
-          // home: const ShowLocations(),
+          // home: const AllMap(),
           home: const LandingPage(),
         );
       }),

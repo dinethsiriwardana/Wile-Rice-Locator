@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
 import 'package:wild_rice_locator/data/firebase_service/location.dart';
 import 'package:wild_rice_locator/domain/model/firebase/location_model_fb.dart';
@@ -16,6 +17,10 @@ class GetAvaiableLocationsBloc
         final locations = await LocationHandler().getLocations();
         print(locations);
         emit(GetAvaiableLocationsLoaded(locations));
+      } else if (event is GetAvaiableLocationsMap) {
+        emit(GetAvaiableLocationsMapLoading());
+        final locations = await LocationHandler().getMarkers();
+        emit(GetAvaiableLocationsMapLoaded(locations));
       }
     });
   }
