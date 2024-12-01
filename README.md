@@ -42,7 +42,7 @@ The following dependencies are used in the development of the WR App:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/dinethsiriwardana/Wile-Rice-Locator.git
    ```
 2. Navigate to the project directory:
    ```bash
