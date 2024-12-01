@@ -1,6 +1,5 @@
-# wild_rice_locator
+# Wild_Rice_Locator
 
-A new Flutter project.
 
 ## Getting Started
 
