@@ -1,62 +1,70 @@
-# Wild_Rice_Locator
 
+# WR App (Wild Rice Locations Identification & Data Collection)
 
-## Getting Started
+The WR App is designed to map and document the natural habitats of wild relatives of rice in Sri Lanka. It focuses on identifying key conservation priorities to preserve biodiversity and promote sustainable agricultural practices.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Location Mapping:** Identify and map habitats using Google Maps and geolocation services.
+- **Data Collection:** Store habitat information in real-time using Firebase Database.
+- **Multi-Language Support:** Localization support for various languages.
+- **AI Integration:** Analyze habitat data for conservation priorities.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Dependencies
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The following dependencies are used in the development of the WR App:
+- **UI/UX**
+  - responsive_sizer: ^3.3.1
+  - flutter_bloc: ^8.1.6
+  - auto_size_text: ^3.0.0
+  - flutter_speed_dial: ^7.0.0
 
-Flutter 3.24.2 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 4cf269e36d (2 months ago) • 2024-09-03 14:30:00 -0700
-Engine • revision a6bd3f1de1
-Tools • Dart 3.5.2 • DevTools 2.37.2
+- **Localization**
+  - flutter_localizations: sdk: flutter
+  - intl: ^0.19.0
 
-## Android Setup
+- **Firebase**
+  - firebase_core: ^3.7.0
+  - firebase_database: ^11.1.4
+  - firebase_auth: ^5.3.2
+  - cloud_firestore: ^5.4.5
 
-1. In your `android/app/src/main/AndroidManifest.xml` file, replace the `<meta-data>` tag for the Google Maps API key with the following:
+- **Mapping and Geolocation**
+  - google_maps_flutter: ^2.9.0
+  - geolocator: ^13.0.2
+  - google_geocoding_api: ^1.5.2
 
-   ```xml
-   <meta-data
-       android:name="com.google.android.geo.API_KEY"
-       android:value="${GOOGLE_MAPS_API_KEY}" />
+- **Utilities**
+  - country_picker: ^2.0.27
+  - url_launcher: ^6.3.1
+
+## How to Use
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd WR-App
+   ```
+3. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+4. Run the app:
+   ```bash
+   flutter run
    ```
 
-2. In your project-level `android/gradle.properties` file, add the following line:
+## Contribution
 
-   ```
-   GOOGLE_MAPS_API_KEY=YOUR_API_KEY_HERE
-   ```
+Contributions are welcome! Please fork the repository and create a pull request.
 
-   Replace `YOUR_API_KEY_HERE` with your actual Google Maps API key.
+## License
 
-3. Make sure to add `android/gradle.properties` to your `.gitignore` file so that your API key is not committed to your Git repository.
+This project is licensed under the MIT License.
 
-## iOS Setup
-
-1. In your `ios/Runner/AppDelegate.swift` file, replace the `GMSServices.provideAPIKey()` call with the following:
-
-   ```swift
-   if let apiKey = ProcessInfo.processInfo.environment["GOOGLE_MAPS_API_KEY"] {
-       GMSServices.provideAPIKey(apiKey)
-   }
-   ```
-
-2. In your project-level `ios/Flutter/flutter_export_environment.sh` file, add the following line:
-
-   ```
-   export "GOOGLE_MAPS_API_KEY=YOUR_API_KEY_HERE"
-   ```
-
-   Replace `YOUR_API_KEY_HERE` with your actual Google Maps API key.
-
-3. Make sure to add `ios/Flutter/flutter_export_environment.sh` to your `.gitignore` file so that your API key is not committed to your Git repository.
-
-By using environment variables, you can keep your sensitive API keys secure while still allowing others to build and run your Flutter app. Remember to update the API key values in the appropriate files and to ignore the files containing the API keys in your `.gitignore`.
+---
+**Developed by Dineth Siriwardana**  
+Focused on conservation and sustainable agriculture practices in Sri Lanka.
